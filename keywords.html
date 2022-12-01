@@ -1,0 +1,50 @@
+<html>
+<head>
+<style>
+h1 {
+    color:red
+}
+body {
+    margin:20%
+}
+</style>
+</head>
+
+<body>
+<h1>C++ Keywords Game</h1>
+<input type="text" id="resp" /> Enter a keyword<br><br>
+<input type="button" onClick="add();" value="Enter"/>
+<br><br>
+Result:<div id="result"></div>
+<br><br>
+Score:<div id="score"></div>
+<script>
+	let score=0;
+	keywords = ["while","do","for",
+		    "break","switch","case","if",
+		    "else","return","class","bool","int","float",
+		    "double", "unsigned", "long","short","char","using",
+		    "namespace"];
+	
+function add()
+{
+	e = document.getElementById("resp");
+	for(i=0;i<20;i=i+1)
+	{
+		if (keywords[i].localeCompare(e.value)==0)
+		{
+			document.getElementById("result").innerHTML = "YES";
+			score=score+1;
+			document.getElementById("score").innerHTML = ""+score;
+			if (score==20)
+			    document.getElementById("score").innerHTML = "20 YOU WIN!";
+			keywords[i]="";
+			break;
+		}
+		
+	}
+}
+
+</script>
+</body>
+</html>
