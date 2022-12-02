@@ -8,23 +8,26 @@ body {
     margin:20%
 }
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 <h1>C++ Keywords Game</h1>
-<input type="text" id="resp" /> Enter a keyword<br><br>
-<input type="button" onClick="add();" value="Enter"/>
+Enter a keyword
+<input type="text" id="resp" /><br><br>
+<input type="button" onClick="add();" value="Enter" id="button1"/>
 <br><br>
 Result:<div id="result"></div>
 <br><br>
 Score:<div id="score"></div>
+	<p>Note that you cannot enter the same keyword more than once.  It will appear invalid </p>
 <script>
 	let score=0;
 keywords = [
 "alignof",
-"and b",
+"and",
 "and_eq",
-"asm ",
+"asm",
 "auto",
 "bitand",
 "bitor",
@@ -46,7 +49,7 @@ keywords = [
 "constinit",
 "continue",
 "co_await",
-"co_return ",
+"co_return",
 "co_yield",
 "decltype",
 "default",
@@ -76,7 +79,7 @@ keywords = [
 "not_eq",
 "nullptr",
 "operator",
-"or ",
+"or",
 "or_eq",
 "private",
 "protected",
@@ -103,8 +106,7 @@ keywords = [
 "typename",
 "union",
 "unsigned",
-"using declaration",
-"using directive",
+"using",
 "virtual",
 "void",
 "volatile",
@@ -113,10 +115,18 @@ keywords = [
 "xor",
 "xor_eq"];
 	
+var input = document.getElementById("resp");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("button1").click();
+  }
+});
+
 function add()
 {
 	e = document.getElementById("resp");
-	for(i=0;i<20;i=i+1)
+	for(i=0;i<93;i=i+1)
 	{
 		if (keywords[i].localeCompare(e.value)==0)
 		{
@@ -126,11 +136,13 @@ function add()
 			if (score==20)
 			    document.getElementById("score").innerHTML = "20 YOU WIN!";
 			keywords[i]="";
+			document.getElementById("resp").value="";
 			break;
 		}
 		else
 		{
-			document.getElementById("result").innerHTML = "Not a keyword";
+			document.getElementById("result").innerHTML = "   ";
+			//e.value="";
 		}
 	}
 }
