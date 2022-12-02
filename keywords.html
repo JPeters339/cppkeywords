@@ -24,10 +24,11 @@ Enter a keyword
 Result:<div id="result"></div>
 <br><br>
 Score:<div id="score"></div>
-	<p>Note that you cannot enter the same keyword more than once.  It will appear invalid </p>
+	<p>Note that you cannot enter the same keyword more than once.  It will appear invalid. </p>
 <script>
 	let score=0;
-keywords = [
+
+let keywords = [
 "alignof",
 "and",
 "and_eq",
@@ -139,7 +140,7 @@ function add()
 			document.getElementById("score").innerHTML = ""+score;
 			if (score==20)
 			    document.getElementById("score").innerHTML = "20 YOU WIN!";
-			keywords[i]="";
+			keywords[i]="USEDKEY";
 			document.getElementById("resp").value="";
 			break;
 		}
